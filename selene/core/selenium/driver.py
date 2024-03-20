@@ -4,6 +4,7 @@ import numpy as np
 from selenium import webdriver
 from pyvirtualdisplay import Display
 from selene.core.config import *
+import undetected_chromedriver as uc
 
 
 def get_driver(
@@ -60,7 +61,8 @@ def get_driver(
     # enable browser logging
     options.set_capability("goog:loggingPrefs", {"browser": "ALL"})
 
-    driver = webdriver.Chrome(options=options)
+    # driver = webdriver.Chrome(options=options)
+    driver = uc.Chrome(options=options, version_main=122)
     driver.set_window_rect(x=0, y=0, width=width, height=height)
 
     if use_display:
