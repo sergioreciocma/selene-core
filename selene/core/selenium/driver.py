@@ -11,6 +11,7 @@ def get_driver(
     width=2560,
     height=1440,
     user_agent="default",
+    headless=True,
     incognito=False,
     disable_gpu=False,
     use_display=False,
@@ -29,12 +30,15 @@ def get_driver(
             If 'default', then a default user agent is used.
             If 'random', then a random user agent is  selected.
             Otherwise, the specified user agent is used.
+        headless : bool
+            whether or not to use headless mode
         incognito : bool
             whether or not to start the browser in incognito mode
         disable_gpu : bool
             whether or not to disable GPU
         use_display: bool
-            whether or not to use a virtual display
+            whether or not to use a virtual display, this needs to
+            be True if headless is False
 
     Returns
     ----------
@@ -42,9 +46,10 @@ def get_driver(
             selenium.webdriver instance
     """
     options = webdriver.ChromeOptions()
-    # options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+    if headless:
+        options.add_argument("--headless")
     if incognito:
         options.add_argument("--incognito")
     if disable_gpu:
