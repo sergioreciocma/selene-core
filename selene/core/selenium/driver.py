@@ -62,7 +62,10 @@ def get_driver(
     #options.set_capability("goog:loggingPrefs", {"browser": "ALL"})
 
     # driver = webdriver.Chrome(options=options)
-    driver = uc.Chrome(options=options, version_main=122)
+    driver = uc.Chrome(
+    #    options=options,
+        version_main=122
+    )
     #driver.set_window_rect(x=0, y=0, width=width, height=height)
 
     #if use_display:
