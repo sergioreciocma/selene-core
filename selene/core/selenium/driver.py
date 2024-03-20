@@ -72,7 +72,7 @@ def get_driver(
         # driver = webdriver.Chrome(options=options)
         driver = uc.Chrome(options=options, version_main=122)
         driver.set_window_rect(x=0, y=0, width=width, height=height)
-        return driver, display
+        return driver
     
     else:
         # driver = webdriver.Chrome(options=options)
