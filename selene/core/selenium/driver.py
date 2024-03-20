@@ -42,7 +42,7 @@ def get_driver(
             selenium.webdriver instance
     """
     options = webdriver.ChromeOptions()
-    #options.add_argument("--headless")
+    # options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     if incognito:
@@ -59,21 +59,21 @@ def get_driver(
         options.add_argument(f"--user-agent={user_agent}")
 
     # enable browser logging
-    #options.set_capability("goog:loggingPrefs", {"browser": "ALL"})
+    options.set_capability("goog:loggingPrefs", {"browser": "ALL"})
 
-    # driver = webdriver.Chrome(options=options)
-    driver = uc.Chrome(
-    #    options=options,
-        version_main=122
-    )
-    #driver.set_window_rect(x=0, y=0, width=width, height=height)
-
-    #if use_display:
-    #    display = Display(visible=False, size=(width, height))
-    #    display.start()
-    #    return driver, display
-
-    return driver
+    if use_display:
+        display = Display(visible=False, size=(width, height))
+        display.start()
+        # driver = webdriver.Chrome(options=options)
+        driver = uc.Chrome(options=options, version_main=122)
+        driver.set_window_rect(x=0, y=0, width=width, height=height)
+        return driver, display
+    
+    else:
+        # driver = webdriver.Chrome(options=options)
+        driver = uc.Chrome(options=options, version_main=122)
+        driver.set_window_rect(x=0, y=0, width=width, height=height)
+        return driver
 
 
 def stop_driver(driver, display=None):
