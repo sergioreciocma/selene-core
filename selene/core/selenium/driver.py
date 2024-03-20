@@ -41,22 +41,22 @@ def get_driver(
         driver : selenium.webdriver
             selenium.webdriver instance
     """
-    #options = webdriver.ChromeOptions()
+    options = webdriver.ChromeOptions()
     #options.add_argument("--headless")
-    #options.add_argument("--no-sandbox")
-    #options.add_argument("--disable-dev-shm-usage")
-    #if incognito:
-    #    options.add_argument("--incognito")
-    #if disable_gpu:
-    #    options.add_argument("--disable-gpu")
-    #if user_agent and user_agent == "random":
-    #    user_agent = get_user_agent_random()
-    #    options.add_argument(f"--user-agent={user_agent}")
-    #elif user_agent and user_agent == "default":
-    #    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4934.122 Safari/537.36"
-    #    options.add_argument(f"--user-agent={user_agent}")
-    #elif user_agent:
-    #    options.add_argument(f"--user-agent={user_agent}")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    if incognito:
+        options.add_argument("--incognito")
+    if disable_gpu:
+        options.add_argument("--disable-gpu")
+    if user_agent and user_agent == "random":
+        user_agent = get_user_agent_random()
+        options.add_argument(f"--user-agent={user_agent}")
+    elif user_agent and user_agent == "default":
+        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4934.122 Safari/537.36"
+        options.add_argument(f"--user-agent={user_agent}")
+    elif user_agent:
+        options.add_argument(f"--user-agent={user_agent}")
 
     # enable browser logging
     #options.set_capability("goog:loggingPrefs", {"browser": "ALL"})
