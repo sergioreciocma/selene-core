@@ -8,7 +8,8 @@ REQUIREMENTS = [
     "lxml",
     "ipython",
     "requests",
-    "pyvirtualdisplay"
+    "pyvirtualdisplay",
+    "undetected-chromedriver"
 ]
 
 REQUIREMENTS_TEST = ["coverage", "interrogate", "pytest", "pytest-cov", "black"]
