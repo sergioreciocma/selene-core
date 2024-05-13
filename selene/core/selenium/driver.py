@@ -15,7 +15,7 @@ def get_driver(
     incognito=False,
     disable_gpu=False,
     use_display=False,
-    extension=None
+    extensions=None
 ):
     """
     Get an instance of selenium.webdriver and start browser
@@ -61,7 +61,7 @@ def get_driver(
         user_agent = get_user_agent_random()
         options.add_argument(f"--user-agent={user_agent}")
     if extensions is not None:
-        options.add_argument(f"--load-extension={', '.join([str(x) for x in [*extensions]])}")
+        options.add_argument(f"--load-extension={', '.join([str(e) for e in [*extensions]])}")
     elif user_agent and user_agent == "default":
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4934.122 Safari/537.36"
         options.add_argument(f"--user-agent={user_agent}")
