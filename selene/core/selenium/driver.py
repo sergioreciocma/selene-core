@@ -15,6 +15,7 @@ def get_driver(
     incognito=False,
     disable_gpu=False,
     use_display=False,
+    extension=None
 ):
     """
     Get an instance of selenium.webdriver and start browser
@@ -39,6 +40,8 @@ def get_driver(
         use_display: bool
             whether or not to use a virtual display, this needs to
             be True if headless is False
+        extension: str
+            if string, should be path to extension to enable.
 
     Returns
     ----------
@@ -57,6 +60,8 @@ def get_driver(
     if user_agent and user_agent == "random":
         user_agent = get_user_agent_random()
         options.add_argument(f"--user-agent={user_agent}")
+    if extension is not None:
+        options.add_extension(extension)
     elif user_agent and user_agent == "default":
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4934.122 Safari/537.36"
         options.add_argument(f"--user-agent={user_agent}")
